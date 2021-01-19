@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./Preview.css";
-import { selectCameraImage } from "./features/cameraSlice";
+import { resetCameraImage, selectCameraImage } from "./features/cameraSlice";
+import CloseIcon from "@material-ui/icons/Close";
 
 const Preview = () => {
   const cameraImage = useSelector(selectCameraImage);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!cameraImage) {
@@ -14,9 +16,14 @@ const Preview = () => {
     }
   }, [cameraImage, history]);
 
+  const closePreview = () => {
+    dispatch(resetCameraImage());
+    // history.replace("/")
+  };
+
   return (
     <div className="preview">
-      <h2>This is the preview</h2>
+      <CloseIcon className="preview__close" onClick={closePreview} />
       <img src={cameraImage} alt="preview" />
     </div>
   );
