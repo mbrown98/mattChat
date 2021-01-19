@@ -3,7 +3,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./Preview.css";
 import { resetCameraImage, selectCameraImage } from "./features/cameraSlice";
-import CloseIcon from "@material-ui/icons/Close";
+
+import {
+  TextFields,
+  Close,
+  Create,
+  Note,
+  MusicNote,
+  AttachFile,
+  Crop,
+  Timer,
+  Send,
+} from "@material-ui/icons";
 
 const Preview = () => {
   const cameraImage = useSelector(selectCameraImage);
@@ -23,8 +34,21 @@ const Preview = () => {
 
   return (
     <div className="preview">
-      <CloseIcon className="preview__close" onClick={closePreview} />
+      <Close className="preview__close" onClick={closePreview} />
+      <div className="preview__toolbarRight">
+        <TextFields />
+        <Create />
+        <Note />
+        <MusicNote />
+        <AttachFile />
+        <Crop />
+        <Timer />
+      </div>
       <img src={cameraImage} alt="preview" />
+      <div className="preview__footer">
+        <h2>Send Now</h2>
+        <Send className="preview__sendIcon" />
+      </div>
     </div>
   );
 };
