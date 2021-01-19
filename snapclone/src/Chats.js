@@ -3,6 +3,7 @@ import { Avatar } from "@material-ui/core";
 import { Search, ChatBubble } from "@material-ui/icons";
 import "./Chats.css";
 import { db } from "./firebase";
+import Chat from "./Chat";
 
 const Chats = () => {
   const [posts, setPosts] = useState([]);
@@ -29,7 +30,24 @@ const Chats = () => {
         </div>
         <ChatBubble className="chats__chatIcon" />
       </div>
-      <div className="chat__posts">{}</div>
+      <div className="chat__posts">
+        {posts.map(
+          ({
+            id,
+            data: { profilePic, username, timestamp, imageUrl, read },
+          }) => (
+            <Chat
+              key={id}
+              id={id}
+              username={username}
+              timestamp={timestamp}
+              imageUrl={imageUrl}
+              read={read}
+              profilePic={profilePic}
+            />
+          )
+        )}
+      </div>
     </div>
   );
 };
