@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar } from "@material-ui/core";
 import { Search, ChatBubble } from "@material-ui/icons";
 import "./Chats.css";
+import { db } from "./firebase";
 
 const Chats = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []);
   return (
     <div className="chats">
       <div className="chats__header">
@@ -14,6 +29,7 @@ const Chats = () => {
         </div>
         <ChatBubble className="chats__chatIcon" />
       </div>
+      <div className="chat__posts">{}</div>
     </div>
   );
 };

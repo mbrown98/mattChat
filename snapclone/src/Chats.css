@@ -38,3 +38,22 @@
   height: 25px !important;
   width: 25px !important;
 }
+
+.chat__posts {
+  height: 359px;
+  background-color: white;
+  box-shadow: 1px -7px -6px rgba(0, 0, 0, 0.44);
+  margin-top: -9px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: scroll;
+}
+
+.chat__posts::-webkit-scrollbar {
+  display: none;
+}
+
+.chat_posts {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
