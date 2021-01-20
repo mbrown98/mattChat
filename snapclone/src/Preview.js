@@ -46,7 +46,7 @@ const Preview = () => {
           .then((url) => {
             db.collection("posts").add({
               imageUrl: url,
-              username: "Matt",
+              username: user.displayName,
               read: false,
 
               profilePic: user.profilePic,
