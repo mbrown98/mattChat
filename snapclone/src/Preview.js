@@ -17,9 +17,11 @@ import {
   Send,
 } from "@material-ui/icons";
 import { db, storage } from "./firebase";
+import { selectUser } from "./features/appSlice";
 
 const Preview = () => {
   const cameraImage = useSelector(selectCameraImage);
+  const user = useSelector(selectUser);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -46,8 +48,8 @@ const Preview = () => {
               imageUrl: url,
               username: "Matt",
               read: false,
-              //   this is where I would add time to view remaining
-              //   profilePic
+
+              profilePic: user.profilePic,
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             });
             history.replace("/chats");

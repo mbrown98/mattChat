@@ -7,6 +7,7 @@ import Chat from "./Chat";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "./features/appSlice";
 import { useHistory } from "react-router-dom";
+import { resetCameraImage } from "./features/cameraSlice";
 
 const Chats = () => {
   const [posts, setPosts] = useState([]);
@@ -15,6 +16,7 @@ const Chats = () => {
   const history = useHistory();
 
   const takeSnap = () => {
+    dispatch(resetCameraImage());
     history.push("/");
   };
 

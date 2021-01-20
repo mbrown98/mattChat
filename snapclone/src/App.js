@@ -37,22 +37,32 @@ function App() {
         {!user ? (
           <Login />
         ) : (
-          <div className="app__body">
-            <Switch>
-              <Route path="/" exact>
-                <WebcamCapture />
-              </Route>
-              <Route path="/chats/view">
-                <ChatView />
-              </Route>
-              <Route path="/preview">
-                <Preview />
-              </Route>
-              <Route path="/chats">
-                <Chats />
-              </Route>
-            </Switch>
-          </div>
+          <>
+            <img
+              className="app__logo"
+              src="https://lakeridgenewsonline.com/wp-content/uploads/2020/04/snapchat.jpg"
+              alt="snapLogo"
+            />
+            <div className="app__body">
+              <div className="app__bodyBackground">
+                {" "}
+                <Switch>
+                  <Route path="/" exact>
+                    <WebcamCapture />
+                  </Route>
+                  <Route path="/chats/view">
+                    <ChatView />
+                  </Route>
+                  <Route path="/preview">
+                    <Preview />
+                  </Route>
+                  <Route path="/chats">
+                    <Chats />
+                  </Route>
+                </Switch>
+              </div>
+            </div>
+          </>
         )}
       </Router>
     </div>
