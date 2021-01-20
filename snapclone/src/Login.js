@@ -15,7 +15,7 @@ const Login = () => {
         dispatch(
           login({
             username: res.user.displayName,
-            profilePic: res.user.photoUrl,
+            profilePic: res.user.photoURL,
             id: res.user.uid,
           })
         );
