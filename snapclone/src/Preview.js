@@ -44,9 +44,10 @@ const Preview = () => {
           .child(id)
           .getDownloadURL()
           .then((url) => {
+            console.log(user);
             db.collection("posts").add({
               imageUrl: url,
-              username: user.displayName,
+              username: user.username,
               read: false,
 
               profilePic: user.profilePic,
