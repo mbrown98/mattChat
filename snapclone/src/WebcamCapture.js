@@ -7,7 +7,7 @@ import { setCameraImage } from "./features/cameraSlice";
 import "./WebcamCapture.css";
 
 const videoConstraints = {
-  width: 200,
+  width: 250,
   height: 400,
   facingMode: "user",
 };
